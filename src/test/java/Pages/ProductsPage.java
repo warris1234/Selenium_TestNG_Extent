@@ -53,6 +53,7 @@ public class ProductsPage
         }
         else
         {
+           // test.fail(MediaEntityBuilder.createScreenCaptureFromBase64String("base64").build());
             test.log(Status.FAIL,"Test fail for sports_Shoes_verifyTitle");
         }
     }
@@ -85,13 +86,14 @@ public class ProductsPage
         }
         else
         {
+           // test.fail(MediaEntityBuilder.createScreenCaptureFromBase64String("base64").build());
             test.log(Status.FAIL,"Test fail for formal_first_Shoes_dropdown_verify");
         }
 
     }
-    public static void sports_first_Shoes_dropdownVerify() throws InterruptedException {
+    public static void sports_first_Shoes_dropdownVerify()
+    {
         driver.findElement(By.xpath(sports_shoes_dropdown_xpath)).click();
-        Thread.sleep(10000);
         String actualTileSS = driver.findElement(By.xpath(sports_shoes_table_xpath)).getText();
         String expectedTitleSS = "   Ultimate";
         Assert.assertEquals(actualTileSS, expectedTitleSS);
@@ -102,6 +104,7 @@ public class ProductsPage
         }
         else
         {
+          //  test.fail(MediaEntityBuilder.createScreenCaptureFromBase64String("base64").build());
             test.log(Status.FAIL,"Test fail for sports_first_Shoes_dropdownVerify");
         }
 
@@ -119,6 +122,7 @@ public class ProductsPage
         }
         else
         {
+           // test.fail(MediaEntityBuilder.createScreenCaptureFromBase64String("base64").build());
             test.log(Status.FAIL,"Test fail for sneaker_first_Shoes_drodownVerify");
         }
 
