@@ -55,7 +55,6 @@ public class LoginPage {
 
     // Methods
     public void clickMenuToggleLink(String linkText) throws InterruptedException {
-     wait.wait(1000);
         List<WebElement> links = getLinks();
         System.out.println("🔗 Number of links: " + links.size());
 
@@ -72,9 +71,6 @@ public class LoginPage {
 
 
     public void login(String username, String password) throws InterruptedException {
-       // wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(verifyUserReg)));
-       // Thread.sleep(2000);
-        wait.wait(1000);
         usernameField().sendKeys("sa");
         passwordField().sendKeys("sa");
         loginButton().click();
@@ -83,8 +79,6 @@ public class LoginPage {
     }
 
     public void validateShoesText(WebElement element, String expectedText, String type) throws InterruptedException {
-        wait.wait(1000);
-        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(verifyUserReg)));
         String actualText = element.getText();
 
         if (expectedText.equals(actualText)) {

@@ -16,7 +16,7 @@ import static Tests.SeleniumTests.driver;
 import static Tests.SeleniumTests.test;
 
 public class SignUpPage {
-    static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+    static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
 
     public static WebElement newRegistration() {

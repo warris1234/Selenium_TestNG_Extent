@@ -14,7 +14,7 @@ import static Tests.SeleniumTests.test;
 
 public class ProductsPage
 {
-    static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+    static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     //WebElement
     public static String formal_shoes_xpath = "//h2[@class='FormalShoesTitle']";
     public static String sports_shoes_xpath = "//h2[@class='SportsShoesTitle']";

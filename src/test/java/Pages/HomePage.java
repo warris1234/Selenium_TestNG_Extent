@@ -14,7 +14,7 @@ import static Tests.SeleniumTests.test;
 
 public class HomePage
 {
-    static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+    static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     public static String hamburger_menu_xpath = "//div[@id='menuToggle']/input";
     public static String online_products_xpath = "//li[text()='Online Products']";
     public static String HomeClick_xpath = "//li[text()='Home']";
