@@ -1,9 +1,12 @@
 package Pages;
 
-import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
+import java.time.Duration;
 
 import static Tests.SeleniumTests.ScreenshotUtil.capture;
 import static Tests.SeleniumTests.driver;
@@ -11,6 +14,7 @@ import static Tests.SeleniumTests.test;
 
 public class ProductsPage
 {
+    static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     //WebElement
     public static String formal_shoes_xpath = "//h2[@class='FormalShoesTitle']";
     public static String sports_shoes_xpath = "//h2[@class='SportsShoesTitle']";
@@ -25,6 +29,7 @@ public class ProductsPage
 // Methods
     public static void formal_Shoes_verifyTitle()
     {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(formal_shoes_xpath)));
         String actualTileFS = driver.findElement(By.xpath(formal_shoes_xpath)).getText();
         String expectedTitleFS = "Formal Shoes";
         Assert.assertEquals(actualTileFS, expectedTitleFS);
@@ -109,12 +114,16 @@ public class ProductsPage
         }
 
     }
-    public static void sneaker_first_Shoes_drodownVerify()
-    {
+    public static void sneaker_first_Shoes_drodownVerify() throws InterruptedException {
         driver.findElement(By.xpath(sneaker_shoes_dropdown_xpath)).click();
+
+        wait.withTimeout(Duration.ofDays(1000));
         String actualTileSeS = driver.findElement(By.xpath(sneaker_shoes_table_xpath)).getText();
+        wait.withTimeout(Duration.ofDays(1000));
         String expectedTitleSeS = "   Archivo";
         Assert.assertEquals(actualTileSeS, expectedTitleSeS);
+
+
         if(expectedTitleSeS.equals(actualTileSeS))
         {
             test.log(Status.PASS,"Test passed for sneaker_first_Shoes_drodownVerify");

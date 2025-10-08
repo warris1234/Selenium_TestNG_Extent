@@ -3,6 +3,7 @@ package Tests;
 import Pages.HomePage;
 import Pages.LoginPage;
 import Pages.ProductsPage;
+import Pages.SignUpPage;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
@@ -75,16 +76,51 @@ public class SeleniumTests {
         loginPage.clickMenuToggleLink("Sign In Portal");
         extent.flush();
     }
-
     @Test(priority = 3)
+    public void NewRegistrationPage() throws InterruptedException {
+        test = extent.createTest("New Registration Page", "Validate New Registration Page ");
+        SignUpPage.NewRegistration();
+        extent.flush();
+    }
+    @Test(priority = 4)
+    public void DropdownOptions() throws InterruptedException {
+        test = extent.createTest("Link Text Toggle Menu", "Validate homepage links");
+        SignUpPage.ClickOption("Mr.");
+        extent.flush();
+    }
+    @Test(priority = 5)
+    public void VerifyLoginText() throws InterruptedException {
+        test = extent.createTest("Dropdown Options", "Validate Dropdown Options successfully");
+        SignUpPage.VerifyUserReg();
+        extent.flush();
+    }
+    @Test(priority = 6)
+    public void SignUpCreationPage() throws InterruptedException {
+        test = extent.createTest("Sign_up_Creation_Page", "Validate Sign upCreationPage");
+        SignUpPage.FirstName();
+        extent.flush();
+    }
+    @Test(priority = 7)
+    public void VerifySuccessfulText() throws InterruptedException {
+        test = extent.createTest("Verify Successful Text", "Validate Verify Successful Text ");
+        SignUpPage.SuccessfulText();
+        HomePage.hamburger_menu_xpath(driver);
+        HomePage.HomeClickButton_xpath(driver);
+        HomePage.hamburger_menu_xpath(driver);
+        extent.flush();
+    }
+
+
+    @Test(priority = 8)
     public void LoginDetails() throws InterruptedException {
         test = extent.createTest("Login Details", "Validate login functionality");
         LoginPage loginPage = new LoginPage(driver);
+        loginPage.clickMenuToggleLink("Sign In Portal");
         loginPage.login("sa", "sa");
         extent.flush();
     }
 
-    @Test(priority = 4)
+    @Test(priority = 9)
     public void ValidateFormalShoesText() throws InterruptedException {
         test = extent.createTest("Validate Formal ShoesText", "Checks Formal Shoes label");
         LoginPage loginPage = new LoginPage(driver);
@@ -92,7 +128,7 @@ public class SeleniumTests {
         extent.flush();
     }
 
-    @Test(priority = 5)
+    @Test(priority = 10)
     public void ValidateSportsShoesText() throws InterruptedException {
         test = extent.createTest("Validate Sports ShoesText", "Checks Sports Shoes label");
         LoginPage loginPage = new LoginPage(driver);
@@ -100,7 +136,7 @@ public class SeleniumTests {
         extent.flush();
     }
 
-    @Test(priority = 6)
+    @Test(priority = 11)
     public void ValidateSneakersShoesText() throws InterruptedException {
         test = extent.createTest("Validate Sneakers Shoes Text", "Checks Sneakers Shoes label");
         LoginPage loginPage = new LoginPage(driver);
@@ -108,7 +144,7 @@ public class SeleniumTests {
         extent.flush();
     }
 
-    @Test(priority = 7)
+    @Test(priority = 12)
     public void OnlineProductsClick() throws InterruptedException {
         test = extent.createTest("Online Products Click", "This test validates that the homepages credentials work successfully");
         HomePage.hamburger_menu_xpath(driver);
@@ -118,7 +154,7 @@ public class SeleniumTests {
         extent.flush();
     }
 
-    @Test(priority = 8)
+    @Test(priority = 13)
     public void ValidateTitlesOnProduct()  {
         test = extent.createTest("Validate Titles On Product", "This test validates that the different shoeTypes ore correct on Online  product page");
         ProductsPage.formal_Shoes_verifyTitle();
@@ -126,22 +162,21 @@ public class SeleniumTests {
         ProductsPage.sneaker_Shoes_verifyTitle();
         extent.flush();
     }
-    @Test(priority = 9)
+    @Test(priority = 14)
     public void ValidateFirstFormalShoes()
     {
         test = extent.createTest("Validate First Formal Shoes", "This test validates that the  formal shoes on Online  product page");
         ProductsPage.formal_first_Shoes_dropdown_verify();
         extent.flush();
     }
-    @Test(priority = 10)
+    @Test(priority = 15)
     public void ValidateFirstSportsShoes() throws InterruptedException {
         test = extent.createTest("Validate First Sports Shoes", "This test validates that the  sports shoes on Online  product page");
         ProductsPage.sports_first_Shoes_dropdownVerify();
         extent.flush();
     }
-    @Test(priority = 11)
-    public void ValidateSneakerShoes()
-    {
+    @Test(priority = 16)
+    public void ValidateSneakerShoes() throws InterruptedException {
         test = extent.createTest("Validate First Sneaker Shoes", "This test validates that the  spark shoes on Online  product page");
         ProductsPage.sneaker_first_Shoes_drodownVerify();
         extent.flush();

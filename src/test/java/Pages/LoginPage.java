@@ -4,16 +4,20 @@ import com.aventstack.extentreports.Status;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 import static Tests.SeleniumTests.ScreenshotUtil.capture;
+import static Tests.SeleniumTests.driver;
 import static Tests.SeleniumTests.test;
 
 public class LoginPage {
 
-    WebDriver driver;
+    static WebDriver driver;
+    static WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -27,6 +31,7 @@ public class LoginPage {
     public WebElement usernameField() {
         return driver.findElement(By.id("usr"));
     }
+
 
     public WebElement passwordField() {
         return driver.findElement(By.id("pwd"));
@@ -50,7 +55,7 @@ public class LoginPage {
 
     // Methods
     public void clickMenuToggleLink(String linkText) throws InterruptedException {
-        Thread.sleep(2000);
+     wait.wait(1000);
         List<WebElement> links = getLinks();
         System.out.println("🔗 Number of links: " + links.size());
 
@@ -64,8 +69,12 @@ public class LoginPage {
         }
     }
 
+
+
     public void login(String username, String password) throws InterruptedException {
-        Thread.sleep(2000);
+       // wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(verifyUserReg)));
+       // Thread.sleep(2000);
+        wait.wait(1000);
         usernameField().sendKeys("sa");
         passwordField().sendKeys("sa");
         loginButton().click();
@@ -74,7 +83,8 @@ public class LoginPage {
     }
 
     public void validateShoesText(WebElement element, String expectedText, String type) throws InterruptedException {
-        Thread.sleep(1000);
+        wait.wait(1000);
+        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(verifyUserReg)));
         String actualText = element.getText();
 
         if (expectedText.equals(actualText)) {
